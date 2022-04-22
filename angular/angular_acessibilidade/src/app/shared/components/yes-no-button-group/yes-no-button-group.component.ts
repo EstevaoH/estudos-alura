@@ -1,5 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { UniqueIdService } from '../../services/unique-id/unique-id.service';
 
 @Component({
   selector: 'app-yes-no-button-group',
@@ -14,14 +15,18 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
+  @Input() disabled = false
   @Input() public value: string = null;
   @Input() public label = '';
   @Output() public valueChange = new EventEmitter<string>();
+  public id: string = null
   public options = YesNoButtonGroupOptions;
   public onChange = (value: string) => { }
   public onTouched = () => { };
 
-  constructor() { }
+  constructor(uniqueIdService: UniqueIdService) {
+    this.id = uniqueIdService.generateUniqueIdWithPrefix('yes-no-button-group');
+  }
 
   ngOnInit(): void {
   }
@@ -38,7 +43,7 @@ export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
     this.onTouched = fn
   }
   public setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    this.disabled = isDisabled;
   }
 
 
