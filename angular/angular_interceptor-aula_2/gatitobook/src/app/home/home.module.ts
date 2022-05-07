@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MensagemModule } from '../componentes/mensagem/mensagem.module';
 import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [HomeComponent, LoginComponent, NovoUsuarioComponent],
@@ -14,9 +15,8 @@ import { NovoUsuarioComponent } from './novo-usuario/novo-usuario.component';
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    MensagemModule,
-    ReactiveFormsModule,
+    SharedModule,
   ],
   exports: [HomeComponent],
 })
-export class HomeModule {}
+export class HomeModule { }

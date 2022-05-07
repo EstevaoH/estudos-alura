@@ -1,0 +1,14 @@
+header{
+    display: flex;
+    align-items: center;
+    background: #f9f9f9;
+    justify-content: space-between;
+}
+
+header nav ul{
+    display: flex;
+}
+
+header nav ul li{
+    list-style: none;
+}
