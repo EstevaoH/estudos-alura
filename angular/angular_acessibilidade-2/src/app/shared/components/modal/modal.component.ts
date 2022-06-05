@@ -1,13 +1,18 @@
-import { Component } from "@angular/core";
+import { Component, HostBinding } from "@angular/core";
+import { fade } from "../../animations/fade";
 import { ModalConfig } from "./intefaces/modal-config";
+import { ModalRef } from "./models/modal-ref";
+
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['modal.component.scss']
+  styleUrls: ['modal.component.scss'],
+  animations: [fade]
 })
 export class ModalComponent {
-
-  public config: ModalConfig
+  @HostBinding('@fade') fade = true;
+  public config: ModalConfig;
+  public modalRef: ModalRef;
 
 }
